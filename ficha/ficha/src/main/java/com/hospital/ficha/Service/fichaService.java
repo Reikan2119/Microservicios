@@ -29,7 +29,7 @@ public class fichaService {
             ficha.setExaminacion(fichaDetails.getExaminacion());
             ficha.setNotas(fichaDetails.getNotas());
             ficha.setRiesgo(fichaDetails.getRiesgo());
-            ficha.setDiagnosticos(fichaDetails.getDiagnosticos());
+            ficha.setDiagnostico(fichaDetails.getDiagnostico());
             return fichaRepository.save(ficha);
         }
         return null;

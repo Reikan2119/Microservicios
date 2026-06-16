@@ -23,7 +23,6 @@ public class fichaController {
         if (fichaService.getAllFichas().isEmpty()) {
             return ResponseEntity.noContent().build();
         }
-
         return ResponseEntity.ok(fichaService.getAllFichas());
     }
 
@@ -49,4 +48,5 @@ public class fichaController {
             return ResponseEntity.notFound().build();
         }
     }
+    // delete
 }

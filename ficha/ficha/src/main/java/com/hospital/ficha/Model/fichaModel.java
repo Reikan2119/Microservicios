@@ -1,8 +1,11 @@
 package com.hospital.ficha.Model;
 
-import java.util.ArrayList;
-import java.util.List;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 
 @Data
@@ -25,6 +28,7 @@ public class fichaModel {
     @Column(nullable = false)
     private Boolean riesgo;
     
-    @Column(nullable = false)
-    private List<String> diagnosticos = new ArrayList<>();
+    @Column(name = "diagnostico", nullable = false)
+    private String diagnostico;
+
 }

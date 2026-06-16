@@ -1,6 +1,5 @@
 package com.hospital.recetas.Model;
 
-import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,19 +16,19 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "recetas")
 public class recetaModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-
+    private Integer id;
+    
     @Column(nullable = false, unique = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String codigo;
 
     @Column(nullable = false)
-    private List<String> medicamentos;
+    private String medicamentos;
 
     @Column(nullable = false)
-    private String fechaVencimiento;
+    private String fechaVencimiento;    
 
 //String prescriptionCode: Folio único para validación legal.
 //List<> medications: Fármacos tópicos (antimicóticos), cremas hidratantes o apósitos recomendados.
