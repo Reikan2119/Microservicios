@@ -1,0 +1,77 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      routes:
+        - id: paciente-ms
+          uri: lb://HOSPITALPACIENTE 
+          predicates:
+            - Path=/api/v1/pacientes/**, /api/v1/contactos/**
+          
+          
+        - id: doctor-ms
+          uri: lb://HOSPITALDOCTOR 
+          predicates:
+            - Path=/api/v1/doctores/**, /api/v1/especialidades/**
+          
+          
+        - id: atencion-ms
+          uri: lb://HOSPITALCITA 
+          predicates:
+            - Path=/api/v1/atenciones/**
+          
+
+        - id: caja-ms
+          uri: lb://HOSPITALCAJA 
+          predicates:
+            - Path=/api/v1/finanzas/**
+          
+          
+
+        - id: descuentos-ms
+          uri: lb://CONFIGURACIONDESCUENTOS
+          predicates:
+            - Path=/api/v1/descuentos/**
+          
+          
+        - id: inventario-ms
+          uri: lb://HOSPITALINVENTARIO 
+          predicates:
+            - Path=/api/v1/inventario/**
+          
+          
+        - id: ficha-ms
+          uri: lb://HOSPITALFICHA
+          predicates:
+            - Path=/api/v1/ficha/**
+          
+          
+        - id: notificacion-ms
+          uri: lb://HOSPITALNOTIFICACIONES
+          predicates:
+            - Path=/api/v1/notificaciones/**
+          
+            
+        - id: recetas-ms
+          uri: lb://HOSPITALRECETAS
+          predicates:
+            - Path=/api/v1/recetas/**
+          
+        - id: login-ms
+          uri: lb://HOSPITALLOGIN
+          predicates:
+            - Path=/api/v1/log/**
+          
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
