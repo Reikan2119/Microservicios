@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hospital.notificaciones.Model.notificacionModel;
@@ -39,10 +40,10 @@ class notificacionesController {
     public void enviarNotificacion(
         // @Parameter documenta las variables individuales que no son un JSON completo
         @Parameter(description = "Canal de envío del mensaje", example = "WhatsApp", required = true) 
-        String medioContacto, 
+        @RequestParam String medioContacto, 
         
         @Parameter(description = "Contenido de la alerta médica", example = "Su cita ha sido agendada para mañana.", required = true) 
-        String mensaje
+        @RequestParam String mensaje
     ) {
         notificacionesService.enviarNotificacion(medioContacto, mensaje);
     }

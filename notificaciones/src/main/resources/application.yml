@@ -11,9 +11,16 @@ spring:
     show-sql: true
 
 server:
-  port: 8088
+  port: 8079
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    disable-swagger-default-url: true
