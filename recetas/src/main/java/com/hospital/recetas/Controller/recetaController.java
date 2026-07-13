@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("api/v1/recetas")
+@RequestMapping("/api/v1/recetas")
 // Agrupa todos los endpoints de este controlador bajo la sección "Recetas" en el panel visual
 @Tag(name = "Recetas", description = "Operaciones sobre las recetas médicas de los pacientes")
 public class recetaController {
