@@ -11,67 +11,105 @@ spring:
           enabled: false
       routes:
         - id: paciente-ms
-          uri: lb://HOSPITALPACIENTE 
+          uri: lb://HOSPITALPACIENTE
           predicates:
             - Path=/api/v1/pacientes/**, /api/v1/contactos/**
-          
-          
+          filters:
+            - RewritePath=/api/v1/pacientes(?<remaining>.*), /${remaining}
+
         - id: doctor-ms
-          uri: lb://HOSPITALDOCTOR 
+          uri: lb://HOSPITALDOCTOR
           predicates:
             - Path=/api/v1/doctores/**, /api/v1/especialidades/**
-          
-          
+          filters:
+            - RewritePath=/api/v1/doctores(?<remaining>.*), /${remaining}
+
         - id: atencion-ms
-          uri: lb://HOSPITALCITA 
+          uri: lb://HOSPITALCITA
           predicates:
             - Path=/api/v1/atenciones/**
-          
+          filters:
+            - RewritePath=/api/v1/atenciones(?<remaining>.*), /${remaining}
 
         - id: caja-ms
-          uri: lb://HOSPITALCAJA 
+          uri: lb://HOSPITALCAJA
           predicates:
             - Path=/api/v1/finanzas/**
-          
-          
+          filters:
+            - RewritePath=/api/v1/finanzas(?<remaining>.*), /${remaining}
 
         - id: descuentos-ms
           uri: lb://CONFIGURACIONDESCUENTOS
           predicates:
             - Path=/api/v1/descuentos/**
-          
-          
+          filters:
+            - RewritePath=/api/v1/descuentos(?<remaining>.*), /${remaining}
+
         - id: inventario-ms
-          uri: lb://HOSPITALINVENTARIO 
+          uri: lb://HOSPITALINVENTARIO
           predicates:
             - Path=/api/v1/inventario/**
-          
-          
+          filters:
+            - RewritePath=/api/v1/inventario(?<remaining>.*), /${remaining}
+
         - id: ficha-ms
           uri: lb://HOSPITALFICHA
           predicates:
             - Path=/api/v1/ficha/**
-          
-          
+          filters:
+            - RewritePath=/api/v1/ficha(?<remaining>.*), /${remaining}
+
         - id: notificacion-ms
           uri: lb://HOSPITALNOTIFICACIONES
           predicates:
             - Path=/api/v1/notificaciones/**
-          
-            
+          filters:
+            - RewritePath=/api/v1/notificaciones(?<remaining>.*), /${remaining}
+
         - id: recetas-ms
           uri: lb://HOSPITALRECETAS
           predicates:
             - Path=/api/v1/recetas/**
-          
+          filters:
+            - RewritePath=/api/v1/recetas(?<remaining>.*), /${remaining}
+
         - id: login-ms
           uri: lb://HOSPITALLOGIN
           predicates:
             - Path=/api/v1/log/**
-          
-
+          filters:
+            - RewritePath=/api/v1/log(?<remaining>.*), /${remaining}
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: Pacientes
+        url: /api/v1/pacientes/v3/api-docs
+      - name: Doctores
+        url: /api/v1/doctores/v3/api-docs
+      - name: Atenciones
+        url: /api/v1/atenciones/v3/api-docs
+      - name: Caja
+        url: /api/v1/finanzas/v3/api-docs
+      - name: Descuentos
+        url: /api/v1/descuentos/v3/api-docs
+      - name: Inventario
+        url: /api/v1/inventario/v3/api-docs
+      - name: Ficha
+        url: /api/v1/ficha/v3/api-docs
+      - name: Notificaciones
+        url: /api/v1/notificaciones/v3/api-docs
+      - name: Recetas
+        url: /api/v1/recetas/v3/api-docs
+      - name: Login
+        url: /api/v1/log/v3/api-docs
+oas-forward-header: X-Forwarded-Prefix
+override-with-forwarded-headers: true
