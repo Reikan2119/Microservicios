@@ -16,11 +16,8 @@ public class SwaggerConfig {
             .info(new Info()
                 .title("Microservicio gestion paciente")
                 .version("1.2")
-                .description("Documentacion de API que permite la gestion del paciente en el sistema de atencion medica")
-                
-    );
-
-
+                .description("Documentacion de API que permite la gestion del paciente en el sistema de atencion medica")     
+         );
     }
 
 }
